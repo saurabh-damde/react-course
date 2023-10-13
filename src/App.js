@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import Table from "./components/Table/Table";
@@ -10,10 +10,10 @@ function App() {
 
     const yearlyData = []; // per-year results
 
-    let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
-    const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
-    const expectedReturn = +userInput["expected-return"] / 100;
-    const duration = +userInput["duration"];
+    let currentSavings = +userInput.currentSavings; // feel free to change the shape of this input object!
+    const yearlyContribution = +userInput.yearlyContribution; // as mentioned: feel free to change the shape...
+    const expectedReturn = +userInput.expectedReturn / 100;
+    const duration = +userInput.duration;
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
@@ -34,7 +34,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Form />
+      <Form calculator={calculateHandler} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
