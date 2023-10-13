@@ -1,9 +1,10 @@
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
+import style from "./Table.module.css";
 
 const Table = (props) => {
   return (
-    <table className="result">
+    <table className={style.result}>
       <TableHeader />
       {props.data.map((data) => (
         <TableBody

@@ -37,7 +37,7 @@ function App() {
       {userInput ? (
         <Table data={yearlyData} initial={userInput.currentSavings} />
       ) : (
-        <p>Nothing to show here...</p>
+        <p style={{ textAlign: "center" }}>Nothing to show here...</p>
       )}
     </div>
   );
