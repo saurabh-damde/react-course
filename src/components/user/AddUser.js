@@ -27,10 +27,11 @@ const AddUser = (props) => {
     } else if (+userInput.age <= 0) {
       return;
     }
+    props.getUser(userInput);
     setUserInput(initial);
   };
   return (
-    <Card className={style.input}>
+    <Card class={style.input}>
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
         <input
