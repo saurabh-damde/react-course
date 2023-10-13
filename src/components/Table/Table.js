@@ -1,11 +1,20 @@
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
 
-const Table = () => {
+const Table = (props) => {
   return (
     <table className="result">
       <TableHeader />
-      <TableBody />
+      {props.data.map((data) => (
+        <TableBody
+          key={data.year}
+          year={data.year}
+          interest={data.yearlyInterest}
+          savings={data.savingsEndOfYear}
+          contribution={data.yearlyContribution}
+          initial={props.initial}
+        />
+      ))}
     </table>
   );
 };

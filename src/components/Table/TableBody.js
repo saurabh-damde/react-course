@@ -1,12 +1,25 @@
-const TableBody = () => {
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const TableBody = (props) => {
   return (
     <tbody>
-      <tr>
-        <td>YEAR NUMBER</td>
-        <td>TOTAL SAVINGS END OF YEAR</td>
-        <td>INTEREST GAINED IN YEAR</td>
-        <td>TOTAL INTEREST GAINED</td>
-        <td>TOTAL INVESTED CAPITAL</td>
+      <tr key={props.year}>
+        <td>{props.year}</td>
+        <td>{formatter.format(props.savings)}</td>
+        <td>{formatter.format(props.interest)}</td>
+        <td>
+          {formatter.format(
+            props.savings - props.initial - props.contribution * props.year
+          )}
+        </td>
+        <td>
+          {formatter.format(props.initial + props.contribution * props.year)}
+        </td>
       </tr>
     </tbody>
   );
