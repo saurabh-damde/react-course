@@ -4,14 +4,14 @@ import UsersList from "./components/user/UsersList";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const addUser = (userInput) => {
+  const addUser = (user) => {
     setUsers((prev) => {
       return [
         ...prev,
         {
           id: Math.random().toFixed(3),
-          name: userInput.username,
-          age: +userInput.age,
+          name: user.name,
+          age: +user.age,
         },
       ];
     });
