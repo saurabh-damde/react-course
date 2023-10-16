@@ -17,10 +17,10 @@ function App() {
     });
   };
   return (
-    <div>
+    <>
       <AddUser getUser={addUser} />
       {users.length > 0 ? <UsersList users={users} /> : ""}
-    </div>
+    </>
   );
 }
 
