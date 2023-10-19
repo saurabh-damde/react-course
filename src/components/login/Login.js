@@ -5,6 +5,7 @@ import classes from "./Login.module.css";
 import Button from "../ui/button/Button";
 import AuthContext from "../../context/auth-context";
 import { INITIAL_STATE, reducer } from "./config";
+import Input from "../ui/input/Input";
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
@@ -42,36 +43,23 @@ const Login = () => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            state.email.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={state.email.value}
-            onChange={(event) => onChangeHandler("email", event.target.value)}
-            onBlur={() => state.email.isValid}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            state.password.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={state.password.value}
-            onChange={(event) =>
-              onChangeHandler("password", event.target.value)
-            }
-            onBlur={() => state.password.isValid}
-          />
-        </div>
+        <Input
+          id="email"
+          type="email"
+          label="E-Mail"
+          value={state.email.value}
+          isValid={state.email.isValid}
+          onChange={onChangeHandler}
+        />
+        <Input
+          id="password"
+          type="password"
+          label="Password"
+          value={state.password.value}
+          isValid={state.password.isValid}
+          onChange={onChangeHandler}
+        />
+
         <div className={classes.actions}>
           <Button
             type="submit"
