@@ -3,11 +3,11 @@ import React from "react";
 import Navigation from "./Navigation";
 import classes from "./Header.module.css";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <header className={classes["main-header"]}>
       <h1>A Typical Page</h1>
-      <Navigation onLogout={props.onLogout} />
+      <Navigation />
     </header>
   );
 };

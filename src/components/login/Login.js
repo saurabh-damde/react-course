@@ -1,57 +1,13 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 import Card from "../ui/card/Card";
 import classes from "./Login.module.css";
 import Button from "../ui/button/Button";
+import AuthContext from "../../context/auth-context";
+import { INITIAL_STATE, reducer } from "./config";
 
-const Login = (props) => {
-  const INITIAL_STATE = {
-    email: {
-      value: "",
-      isValid: false,
-    },
-    password: {
-      value: "",
-      isValid: false,
-    },
-    form: {
-      value: "",
-      isValid: false,
-    },
-  };
-
-  const reducer = (state, action) => {
-    if (action.type === "email") {
-      return {
-        email: {
-          value: action.value,
-          isValid: action.value.includes("@"),
-        },
-        password: state.password,
-        form: state.form,
-      };
-    } else if (action.type === "password") {
-      return {
-        email: state.email,
-        password: {
-          value: action.value,
-          isValid: action.value.trim().length,
-        },
-        form: state.form,
-      };
-    } else if (action.type === "form") {
-      return {
-        email: state.email,
-        password: state.password,
-        form: {
-          isValid: state.email.isValid && state.password.isValid,
-        },
-      };
-    } else {
-      console.log("Something's not right");
-    }
-    return INITIAL_STATE;
-  };
+const Login = () => {
+  const authCtx = useContext(AuthContext);
 
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
@@ -80,7 +36,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(state.email.value, state.password.value);
+    authCtx.onLogin(state.email.value, state.password.value);
   };
 
   return (
